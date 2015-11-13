@@ -1,12 +1,11 @@
 language: python
 python:
-  - "2.7"
-  - "3.4"
-# command to install dependencies
-install: 
-  - pip install -r requirements.txt
-  - python setup.py install
-
-# command to run tests
+- '2.7'
+- '3.4'
+install:
+- pip install -r requirements.txt
+- python setup.py install
 script: nosetests
-secure: "QCatUzr9Eahr3jGh7JGcqSZ6FKLnlH+/vTrTy3Kf2UlN42F1GTkds31ZkUOkXq/+KPseOAs05w2OeeT5qwx2IVTABkZEkLspb/Gru/E2A3hI76Wz46hQkzBgjikACCqQkvGZCfpCOKYVVHGrysaRiVrbh75OWkSZ2SrDyXvbVK3lTnqcPOUoQxFqifU/bA3W9pZwOp6ee+BLoWZVJXQpGRWkXWw0rKqZauI7WKktBIp6YbICDtyE0M2aEjsxI0IjoyAMbKxEHQv2Qk/vEEPHyuMCoqcS+6k96LuCPsqJg5V7tIptJ0U3ZB8kY3beRHy7mlKyx1t1PwCoL1FnD8puQGg6GbYVe6bJ7f4HypMnGBDROxPQ7kvvx3artLJzD0n4wUulz1tr9skj6M6QDG8F1nUckd6sVdCjotpyIqMT6BAZxaxf3RDHODVZelnX4EdHGHgJDZIxVgq/vIu4whDFeMu5tVCOj/8MakJ2HlVfyqvgMEJ7s4fd4rpZFX1JEDd1z3ECKFTk8BG8UpbTFncTUvioLgtCIHxMf3GhoGNib/q0RAowd5pHDOrDPkcRa/Mw5sh45KaCdz1POtJhiP6+/amNGqFiQbk2wc0TyuLvlf+kwuMpLH1hjzFEwJ6DH/xbcYTbNXHpgkSemMo5mQ6EU76c4H3ZW0ioexUT/YeTxRo="
+env:
+  global:
+    secure: TTffF3XTKjirIKMRLo6MLrEGqYWeXWwmKh1VlMym+Q1IjL38rx4wrSekxWx/zUDlEsKDHnAWOzlSGLO70omPIMnnY1ofRc5WPhRxyqq9CVPQp9mRLvr3dFxoVac0zf7BlwaPoI2n/kYHK6wxBpOocrolw5/IzTL5NBJrpv0WLQmtx5uYxA/YFvqDFEo38QLNjMWgOZZf3foZHIgC18QWXvQo9c1FUG1VJjsOj94zGGG1DxgLocQh3gIkhrhgDX1naAXkc/9GZX3IdH+Wrosz8f0u9qGNU7fOf9qfAv9h63+Mi0iIDGqOMAiaKpGVt83rEMhUxpdVUSOOtfSYyKtA1APJGkM0HuCsoB/YtNOYCF30xTMTWeUPIGAKKDaWqtWwyzVZ32eYRO6s5hMOjFr05tVl2WK2TgLVHjORzsUxUHqao54h64OreNvFKhEuVwiPaQw1Qjy9Ho/ozvM3XW1PD+98InIRK++BYiD5nH0xHXjhz0xzWwE7fLK8uwXcpAf8UcjhqsvQjrvEp2Hzm/PjzZOTPoIqKd+xDcfcGxyslFNwaLLojOfBpWF9ClaUqQfwwV8Ax+VbThCkY5INt9GjxTSbgc/59nV6oMi+4HCWO+ZIJRoeLbqNAHQpiLbNs89nBbv1Q/nPdL94QLSBuhs1mFFrNEEYLcfhgUlnv1jjtao=
