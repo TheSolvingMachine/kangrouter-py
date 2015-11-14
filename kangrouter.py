@@ -7,9 +7,10 @@ import json
 
 class KangRouterClient:
   pathbase = "https://thesolvingmachine.com/kangrouter/srv/v1/solvers"
-  def __init__(self,apiKey,licenseId=None):    
-    self.apiKey = apiKey
-    self.licenseId = licenseId
+  def __init__(self,apiKey,licenseId):    
+    self.headers = {"content-type": "application/json",
+                    "Authorization": apiKey}
+    self.params = {"licenseId" : licenseId }
 
   def validateReply(self,req):
     if req.status_code >= 400 and req.status_code <= 500:
@@ -22,12 +23,12 @@ class KangRouterClient:
   def create(self,problem,**kwargs):
     path = self.pathbase
     payload=json.dumps(problem)
-    params = self.getCommonParams().copy()
+    params = self.params.copy()
     params.update(kwargs)
     req = requests.post(path,
                         params=params, 
-              headers={'content-type': 'application/json'},
-              data=payload)    
+                        headers=self.headers,
+                        data=payload)    
     self.validateReply(req)
     return req.json()["solverId"]
     
@@ -35,7 +36,8 @@ class KangRouterClient:
     path = "{base}/{solverId}".format(base=self.pathbase,
                                       solverId=str(solverId))
     req = requests.delete(path,
-                          params=self.getCommonParams())
+                          params=self.params,
+                          headers=self.headers)
     self.validateReply(req)
     return True
     
@@ -43,7 +45,8 @@ class KangRouterClient:
     path = "{base}/{solverId}/stop".format(base=self.pathbase,
                                       solverId=str(solverId))
     req = requests.put(path,
-                       params=self.getCommonParams())
+                       params=self.params,
+                       headers=self.headers)
     self.validateReply(req)
     return True
     
@@ -51,7 +54,8 @@ class KangRouterClient:
     path = "{base}/{solverId}/status".format(base=self.pathbase,
                                       solverId=str(solverId))
     req = requests.get(path,
-                       params=self.getCommonParams())
+                       params=self.params,
+                       headers=self.headers)
     self.validateReply(req)
     return req.json()
 
@@ -59,7 +63,8 @@ class KangRouterClient:
     path = "{base}/{solverId}/solution".format(base=self.pathbase,
                                       solverId=str(solverId))
     req = requests.get(path,
-                       params=self.getCommonParams())
+                       params=self.params,
+                       headers=self.headers)
     self.validateReply(req)
     return req.json()
     
@@ -79,10 +84,5 @@ class KangRouterClient:
       raise exception.InternalError("Timed out waiting for solver")
     raise exception.UserCancelled()
     
-  def getCommonParams(self):
-    if self.licenseId:
-      return {"licenseId":self.licenseId, "apiKey":self.apiKey}
-    else:
-      return {"apiKey":self.apiKey}
 
     

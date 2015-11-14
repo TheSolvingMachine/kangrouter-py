@@ -4,6 +4,7 @@ import time
 import os
 
 apiKey = os.environ["API_KEY"]
+licenseId = os.environ["LICENSE_ID"]
 
 problem = {
   "nbResources": 3,
@@ -55,7 +56,7 @@ problem = {
 }
 
 def test():
-  api = KangRouterClient(apiKey)
+  api = KangRouterClient(apiKey,licenseId)
   solverId = api.create(problem)
   status = api.getStatus(solverId)
   solution = api.getSolution(solverId)
