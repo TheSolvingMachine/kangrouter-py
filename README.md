@@ -152,7 +152,7 @@ The solution shows at what times, or time intervals, drivers must leave their de
       'maxStartTime': '12:30',
       'minEndTime': '13:40',
       'minStartTime': '07:00',
-      'vehicleId': u'12-AS-46'
+      'vehicleId': '12-AS-46'
     }
   ]
 }
