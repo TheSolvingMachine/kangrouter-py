@@ -50,7 +50,7 @@ problem = {
       "maxWorkDuration": 540,
       "capacities": [
         2,
-        3,
+        3
       ],
       "breaks": [
         {
