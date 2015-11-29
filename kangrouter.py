@@ -30,7 +30,7 @@ class KangRouterClient:
                         headers=self.headers,
                         data=payload)    
     self.validateReply(req)
-    return req.json()["solverId"]
+    return req.text
     
   def delete(self,solverId):
     path = "{base}/{solverId}".format(base=self.pathbase,
