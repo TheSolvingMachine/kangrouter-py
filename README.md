@@ -183,5 +183,5 @@ api.delete(solverId)
 ```
 
 ## Links
-* [KangRouter API Reference](https://thesolvingmachine.com/kangrouter/doc/)
+* [KangRouter API Reference](https://thesolvingmachine.com/kangrouter/doc/en/)
 * [KangRouter API Playground](https://thesolvingmachine.com/swagger/kangrouter/srv/)
