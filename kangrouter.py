@@ -4,6 +4,10 @@ from tsm.common.app import exception
 
 import requests
 import json
+from requests.packages.urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
+
+from tsm.config import KANGROUTER_WEBSERVICE_APPLICATION_ROOT
 
 class KangRouterClient:
   pathbase = "https://thesolvingmachine.com/kangrouter/srv/v1/solvers"
@@ -11,6 +15,11 @@ class KangRouterClient:
     self.headers = {"content-type": "application/json",
                     "Authorization": apiKey}
     self.params = {"licenseId" : licenseId }
+    retries = Retry(total=5,
+                    backoff_factor=0.75)
+    self.session = requests.Session()
+    self.session.mount(KANGROUTER_WEBSERVICE_APPLICATION_ROOT, 
+                       HTTPAdapter(max_retries=retries))
 
   def validateReply(self,req):
     if req.status_code >= 400 and req.status_code <= 500:
@@ -25,7 +34,7 @@ class KangRouterClient:
     payload=json.dumps(problem)
     params = self.params.copy()
     params.update(kwargs)
-    req = requests.post(path,
+    req = self.session.post(path,
                         params=params, 
                         headers=self.headers,
                         data=payload)    
@@ -35,7 +44,7 @@ class KangRouterClient:
   def delete(self,solverId):
     path = "{base}/{solverId}".format(base=self.pathbase,
                                       solverId=str(solverId))
-    req = requests.delete(path,
+    req = self.session.delete(path,
                           params=self.params,
                           headers=self.headers)
     self.validateReply(req)
@@ -44,7 +53,7 @@ class KangRouterClient:
   def stop(self,solverId):
     path = "{base}/{solverId}/stop".format(base=self.pathbase,
                                       solverId=str(solverId))
-    req = requests.put(path,
+    req = self.session.put(path,
                        params=self.params,
                        headers=self.headers)
     self.validateReply(req)
@@ -53,7 +62,7 @@ class KangRouterClient:
   def getStatus(self,solverId):
     path = "{base}/{solverId}/status".format(base=self.pathbase,
                                       solverId=str(solverId))
-    req = requests.get(path,
+    req = self.session.get(path,
                        params=self.params,
                        headers=self.headers)
     self.validateReply(req)
@@ -62,7 +71,7 @@ class KangRouterClient:
   def getSolution(self,solverId):
     path = "{base}/{solverId}/solution".format(base=self.pathbase,
                                       solverId=str(solverId))
-    req = requests.get(path,
+    req = self.session.get(path,
                        params=self.params,
                        headers=self.headers)
     self.validateReply(req)

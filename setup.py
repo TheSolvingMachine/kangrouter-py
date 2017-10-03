@@ -1,14 +1,14 @@
 import setuptools
 
 setuptools.setup(name='kangrouter-py',
-                 version='1.0.3',
+                 version='1.0.4',
                  description='Python client for the KangRouter transportation service optimizer.',
                  long_description=open('README.md').read().strip(),
                  include_package_data = True,
                  author='TheSolvingMachine',
                  author_email='support@thesolvingmachine.com',
                  url='https://github.com/TheSolvingMachine/kangrouter-py',
-                 download_url='https://github.com/TheSolvingMachine/kangrouter-py/tarball/1.0.3',
+                 download_url='https://github.com/TheSolvingMachine/kangrouter-py/tarball/1.0.4',
                  py_modules=['kangrouter','tsm','tsm.common','tsm.common.app','tsm.common.app.exception'],
                  install_requires=['requests'],
                  license='Apache',

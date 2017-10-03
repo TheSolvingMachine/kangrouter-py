@@ -2,12 +2,12 @@
 ERROR_INVALID_API_USAGE = 1
 ERROR_INTERNAL = 2
 ERROR_USER_CANCELLED = 3
-ERROR_GEOCODER = 4
+ERROR_ROUTER = 4
 
 errors = { ERROR_INVALID_API_USAGE : "Invalid API usage.",
        ERROR_INTERNAL : "Internal error.",
        ERROR_USER_CANCELLED : "Cancelled by user.",
-       ERROR_GEOCODER : "Geocoder error."}
+       ERROR_ROUTER : "Router error."}
 
 class MultipleInvalidAPIUsage(Exception):
   pass
@@ -60,13 +60,13 @@ class UserCancelled(Exception):
         "info" : self.message}
     return rv
 
-class GeocoderError(Exception):
+class RouterError(Exception):
   """Exception raised for errors in geocoding service.
   Attributes:
     msg  -- server message
   """
   status_code = 500
-  code = ERROR_GEOCODER
+  code = ERROR_ROUTER
   def __init__(self, message=""):
     Exception.__init__(self)
     self.message = message
@@ -74,7 +74,7 @@ class GeocoderError(Exception):
     return self.message
   def to_dict(self):
     rv = {"code" : self.code,
-        "error" : errors[ERROR_GEOCODER],
+        "error" : errors[ERROR_ROUTER],
         "info" : self.message}
     return rv
 
@@ -83,7 +83,7 @@ def jsonToException(d):
     return InternalError(d["info"])
   elif d["code"] == ERROR_USER_CANCELLED:
     return UserCancelled(d["info"])
-  elif d["code"] == ERROR_GEOCODER:
-    return GeocoderError(d["info"])
+  elif d["code"] == ERROR_ROUTER:
+    return RouterError(d["info"])
   else:
     return InvalidAPIUsage(d["info"],d["code"])
