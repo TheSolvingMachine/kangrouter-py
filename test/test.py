@@ -61,11 +61,13 @@ def test():
   api = KangRouterClient(apiKey,licenseId)
   solverId = api.create(problem)
   status = api.getStatus(solverId)
-  solution = api.getSolution(solverId)
-  time.sleep(10)
-  status = api.getStatus(solverId)
+  for i in range(10):
+    time.sleep(5)
+    status = api.getStatus(solverId)
+    if status["execStatus"]!="pending":
+      break
   assert status["execStatus"]=="completed"
-  assert status["totalDistance"]==75
+  assert status["schedCost"]==70
   solution = api.getSolution(solverId)
   assert solution["type"]=="total"
   assert len(solution["jobsScheduled"])==1
