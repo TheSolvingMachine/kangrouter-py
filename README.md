@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/TheSolvingMachine/kangrouter-py.svg?branch=master)](https://travis-ci.org/TheSolvingMachine/kangrouter-py)
 
 # kangrouter-py
-Python client for KangRouter. KangRouter is an application for large scale transportation service optimization (see https://thesolvingmachine.com/kangrouter). 
+Python client for [KangRouter](https://thesolvingmachine.com/kangrouter/) - pickup/delivery transportation services optimization. 
     
 ## Installation
 
@@ -13,7 +13,7 @@ pip install kangrouter-py
 
 ### Preliminaries
 For interacting with the API, both an *apiKey* and a *licenseId* are required. Please
-obtain them from https://thesolvingmachine.com/account.
+obtain them from your [account](https://thesolvingmachine.com/account) page.
 
 ### An example problem
 
@@ -182,5 +182,6 @@ and remove a solver (and associated data) from the server:
 api.delete(solverId)
 ```
 
-## More documentation
-For a complete description of the KangRouter API please visit https://thesolvingmachine.com/swagger/kangrouter/srv/.
+## Links
+* [KangRouter API Reference](https://thesolvingmachine.com/kangrouter/doc/en/)
+* [KangRouter API Playground](https://thesolvingmachine.com/swagger/kangrouter/srv/)
