@@ -7,7 +7,7 @@ import json
 from requests.packages.urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 
-from tsm.config import KANGROUTER_WEBSERVICE_APPLICATION_ROOT
+KANGROUTER_WEBSERVICE_APPLICATION_ROOT="/kangrouter/srv/v1"
 
 class KangRouterClient:
   pathbase = "https://thesolvingmachine.com/kangrouter/srv/v1/solvers"
