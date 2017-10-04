@@ -21,7 +21,7 @@ Input problems are described as a python dict. As a (simplistic) example, consid
 * Taking [Alberto Caeiro](https://en.wikipedia.org/wiki/Fernando_Pessoa#Alberto_Caeiro) home after a medical appointment at the [Garcia de Orta Hospital](http://www.hgo.pt/). He is ready to leave the hospital after 13:00, and must be home no later than 14:15. Alberto is on a wheelchair, so we allocate 5 minutes for pickup and dropoff.
 * Picking [Ricardo Reis](https://en.wikipedia.org/wiki/Fernando_Pessoa#Ricardo_Reis) at the [Brasileira](https://en.wikipedia.org/wiki/Caf%C3%A9_A_Brasileira) café, and take him to a beach restaurant. He wants to be there no later than 12:15. Ricardo takes a regular seat.
 
-Assume that the vehicle available for transportation is parked in [Sintra](https://en.wikipedia.org/wiki/Sintra), has 3 seats and room for 2 wheelchairs.  Additionally, the driver must have a 60 minute lunch break between 12:00 and 14:00. 
+Assume that the vehicle available for transportation is parked in [Sintra](https://en.wikipedia.org/wiki/Sintra), has 3 seats and room for 2 wheelchairs.
 
 This problem translates to the following object:
 
@@ -62,14 +62,6 @@ problem = {
       "maxEndTime": "22:00",
       "maxWorkDuration": 540,
       "capacities": [2,3],
-      "breaks": [
-        {
-          "breakId": "Lunch",
-          "minStartTime": "12:00",
-          "maxEndTime": "14:00",
-          "duration": 60
-        }
-      ],
       "overspeed": 1.25
     }
   ]
@@ -151,15 +143,6 @@ The solution shows at what times, or time intervals, drivers must leave their de
   "type": "total",
   "vehiclesScheduled": [
     {
-      "breaks": [
-        {
-          "breakId": "Lunch",
-          "maxEndTime": "13:55",
-          "maxStartTime": "12:55",
-          "minEndTime": "13:00",
-          "minStartTime": "12:00"
-        }
-      ],
       "maxEndTime": "14:35",
       "maxStartTime": "11:38",
       "minEndTime": "13:40",
